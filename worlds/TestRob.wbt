@@ -1,0 +1,233 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  fieldOfView 0.4
+  orientation -0.04186860056961035 0.9983487101868826 0.0393303083452239 1.5099458390841214
+  position 6.439208929069165 -0.03716953356116583 -2.985465379559648
+  follow "e-puck"
+  followType "None"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+WoodenBox {
+  translation -0.32663425400992885 -0.3303923999528052 0.5349009670277174
+  rotation -6.770010365905951e-15 1 -7.007359548484758e-15 -0.006788383776503263
+  size 0.2 0.2 0.2
+  mass 1
+}
+WoodenBox {
+  translation -0.7107217583055678 -0.3303923999528052 -0.4985301897440475
+  rotation -0.004486828302511408 0.004486828302511429 0.9999798681691385 -1.5708164588284053
+  name "wooden box(1)"
+  size 0.2 0.2 0.2
+  mass 1
+}
+WoodenBox {
+  translation -0.0122978 -0.160392 -2.85868
+  rotation 0.9999073873371871 0.008284883209340583 0.010797104182507317 -1.8326853071795863
+  name "wooden box(2)"
+  size 0.2 0.2 0.2
+  mass 1
+}
+E-puck {
+  translation -1.9722947587273012 -0.4300639456410308 -0.5859313365813013
+  rotation 0.00013425240845800019 0.9999997600442043 -0.0006796232960825221 2.748538346710919
+  controller "obstacle_Avoid"
+  battery [
+    0
+  ]
+}
+RectangleArena {
+  translation 0 -0.43 -3.43
+  floorSize 10 10
+}
+DEF v2 Robot {
+  translation -0.069396 -0.320279 -3.90682
+  rotation 2.1512512654680964e-05 0.9999999184845985 -0.00040319723264051226 -0.050797710390846934
+  children [
+    DEF Body Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 0.05 0.2
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -2.7872492745381376e-07
+        anchor 0.06 0 0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.06 0 0.05
+        rotation -1.3947348600184667e-07 1.3936246372690503e-07 0.9999999999999806 1.5700000000000194
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0 1 0
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        boundingObject USE Wheel
+        physics DEF Fizzics_wh Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -1.5241841562299534e-06
+        anchor -0.06 0 0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint Solid {
+        translation -0.059999999999999984 -7.620920781146728e-08 0.050000000000058074
+        rotation -7.62699194220153e-07 7.620920781146779e-07 0.9999999999994188 1.5700000000005818
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE Wheel
+        physics USE Fizzics_wh
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 5.970013191390135e-07
+        anchor 0.06 0 -0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint Solid {
+        translation 0.06 -2.985006595694905e-08 -0.05000000000000892
+        rotation 2.9873845833833075e-07 -2.9850065956948766e-07 0.9999999999999107 1.5700000000000889
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 1 1 0
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE Wheel
+        physics USE Fizzics_wh
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2.808881317419859e-07
+        anchor -0.06 0 -0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05999999999999999 -1.4044406587099077e-08 -0.05000000000000197
+        rotation 1.4055594979782534e-07 -1.4044406587099115e-07 0.9999999999999802 1.57000000000002
+        children [
+          Shape {
+            appearance PBRAppearance {
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE Wheel
+        physics USE Fizzics_wh
+      }
+    }
+    DistanceSensor {
+      translation 0.02 0 0.1
+      rotation 0 1 0 -1.27
+      children [
+        DEF sensor Shape {
+          appearance PBRAppearance {
+            baseColor 0 1 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_left"
+      boundingObject USE sensor
+      physics Physics {
+      }
+    }
+    DistanceSensor {
+      translation -0.02 0 0.1
+      rotation 0 1 0 -1.87
+      children [
+        DEF sensor Shape {
+          appearance PBRAppearance {
+            baseColor 0 1 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_right"
+      boundingObject USE sensor
+      physics Physics {
+      }
+    }
+  ]
+  name "robot(1)"
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "obstacle_Avoid"
+}
+Ramp30deg {
+  translation 0.0504253 -1.33685 -1.81992
+  rotation 0.12942597159689126 0.9830927842558883 0.12952797157450688 1.58705
+}
+Ramp30deg {
+  translation -1.36686 -1.21262 -2.07236
+  rotation 0.5202917188893217 0.6775136339432086 -0.5198767191135438 1.9499
+  name "ramp 30 degrees(1)"
+}

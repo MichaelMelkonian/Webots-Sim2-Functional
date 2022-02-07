@@ -1,0 +1,306 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  fieldOfView 0.4
+  orientation -0.3223367758651362 -0.9425509239352188 -0.08773117298733922 0.6247439058530806
+  position -2.188391107622848 0.49636191218910886 -0.9792867808561416
+  follow "e-puck"
+  followType "None"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+WoodenBox {
+  translation -0.32663425390224965 -0.33039240013559423 0.5349009670702571
+  rotation -6.212695906581782e-08 0.9999999999999855 1.5883520424630903e-07 -0.006788383776503371
+  size 0.2 0.2 0.2
+  mass 1
+}
+WoodenBox {
+  translation -0.7107217582662859 -0.33039240002233505 -0.49853018980975705
+  rotation -0.004486827972213488 0.004486828631060133 0.9999798681691462 -1.5708164592182683
+  name "wooden box(1)"
+  size 0.2 0.2 0.2
+  mass 1
+}
+WoodenBox {
+  translation 0.4071026179319894 -0.3303924001022533 -0.5092654203662098
+  rotation 7.330913463590038e-09 0.9999999999999988 4.887864441234334e-08 -0.021590902128182963
+  name "wooden box(2)"
+  size 0.2 0.2 0.2
+  mass 1
+}
+E-puck {
+  translation -0.1121463538456831 -0.43006396197647395 -4.394065694277588
+  rotation 0.11218665578683597 0.9936857864643321 0.0016468278986923768 -0.005632734977148064
+  controller "front_command"
+  battery [
+    0
+  ]
+}
+Solid {
+  translation 0 0 1.41
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 7 1 0.1
+      }
+    }
+  ]
+}
+Solid {
+  translation 3.49 0 -2.04
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 7 1 0.1
+      }
+    }
+  ]
+  name "solid(1)"
+}
+RectangleArena {
+  translation 0 -0.43 -3.43
+  floorSize 10 10
+}
+Robot {
+  translation 0 -0.02 -1.31
+  children [
+    DEF ds_left DistanceSensor {
+      translation 0.2 0 -0.05
+      rotation 0 1 0 0.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.03 0.03 0.03
+          }
+        }
+      ]
+    }
+    DEF ds_left DistanceSensor {
+      translation 0.2 0 0.05
+      rotation 0 1 0 -0.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.03 0.03 0.03
+          }
+        }
+      ]
+      name "distance sensor(1)"
+    }
+    HingeJoint {
+      endPoint Solid {
+        translation 0.089998 -0.0599999 0.125883
+        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.05
+            }
+          }
+        ]
+      }
+    }
+    HingeJoint {
+      endPoint Solid {
+        translation 0.089996 -0.0599997 -0.124117
+        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.05
+            }
+          }
+        ]
+        name "solid(2)"
+      }
+    }
+    HingeJoint {
+      endPoint Solid {
+        translation -0.160002 -0.0599999 0.125883
+        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.05
+            }
+          }
+        ]
+        name "solid(1)"
+      }
+    }
+    HingeJoint {
+      endPoint Solid {
+        translation -0.160002 -0.0599998 -0.124117
+        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.05
+            }
+          }
+        ]
+        name "solid(3)"
+      }
+    }
+    DEF Body Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.4 0.1 0.2
+      }
+    }
+  ]
+}
+DEF v2 Robot {
+  translation 0 -0.15 -3.81
+  children [
+    DEF Body Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 0.05 0.2
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+        }
+      ]
+      endPoint Solid {
+        translation 0.06 0 0.05
+        rotation 0 0 1 1.57
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0 1 0
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        boundingObject USE Wheel
+        physics DEF Fizzics_wh Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+        }
+      ]
+      endPoint Solid {
+        translation -0.06 0 0.05
+        rotation 0 0 1 1.57
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE Wheel
+        physics USE Fizzics_wh
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+        }
+      ]
+      endPoint Solid {
+        translation 0.06 0 -0.05
+        rotation 0 0 1 1.57
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 1 1 0
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE Wheel
+        physics USE Fizzics_wh
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+        }
+      ]
+      endPoint Solid {
+        translation -0.06 0 -0.05
+        rotation 0 0 1 1.57
+        children [
+          Shape {
+            appearance PBRAppearance {
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE Wheel
+        physics USE Fizzics_wh
+      }
+    }
+  ]
+  name "robot(1)"
+  boundingObject USE Body
+  physics Physics {
+  }
+}

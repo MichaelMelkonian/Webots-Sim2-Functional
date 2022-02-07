@@ -1,0 +1,87 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  fieldOfView 0.4
+  orientation 0.32459075100441925 -0.828932492831506 -0.4555345943949068 4.222036061635971
+  position 7.168416406025322 12.792380740192497 -3.147851024139194
+  follow "e-puck"
+  followType "Pan and Tilt Shot"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+WoodenBox {
+  translation -0.3293974055582583 -0.16914684767910235 0.5404720571453591
+  rotation -0.8519199861133615 0.02245898548569441 -0.5231901482554534 -0.0889788012637433
+  size 0.2 0.2 0.2
+  mass 1
+}
+WoodenBox {
+  translation -0.7034235860434779 -0.10835522913699723 -0.49238567550056805
+  rotation -0.037910496451442836 -0.040468563798376274 0.9984613610966134 -1.5330024636174164
+  name "wooden box(1)"
+  size 0.2 0.2 0.2
+  mass 1
+}
+WoodenBox {
+  translation 0.4028555679206099 -0.0585730985685356 -0.5016897135973727
+  rotation -0.8397214134754932 0.2268737289654514 -0.4933520638003154 -0.09133284070981686
+  name "wooden box(2)"
+  size 0.2 0.2 0.2
+  mass 1
+}
+E-puck {
+  translation -0.131382063588113 -0.14491729865284883 -0.9841212657168447
+  rotation -0.8875469261770123 0.04409996788945984 -0.4586018389255386 -0.09364538048168236
+  controller "front_command"
+  battery [
+    0
+  ]
+}
+Solid {
+  translation -3.61 0 -3.54
+  rotation 0 1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 10 1 0.1
+      }
+    }
+  ]
+  name "solid(2)"
+}
+Solid {
+  translation 0 0 1.41
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 7 1 0.1
+      }
+    }
+  ]
+}
+Solid {
+  translation 3.49 0 -2.04
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 7 1 0.1
+      }
+    }
+  ]
+  name "solid(1)"
+}
+RectangleArena {
+  translation 0 -0.43 -3.43
+  floorSize 10 10
+}
